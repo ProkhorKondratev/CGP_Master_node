@@ -1,11 +1,11 @@
 from django.contrib import admin
-from .models import Project
+from .models import WorkerNode
 
 
-@admin.register(Project)
-class ProjectAdmin(admin.ModelAdmin):
-    list_display = ('name', 'created_at', 'updated_at')
-    search_fields = ('name', 'created_at', 'id')
+@admin.register(WorkerNode)
+class WorkerNodeAdmin(admin.ModelAdmin):
+    list_display = ('host', 'port', 'created_at', 'updated_at')
+    search_fields = ('host', 'port', 'created_at', 'id')
     list_filter = ('created_at', 'updated_at')
 
     fieldsets = (
@@ -14,10 +14,10 @@ class ProjectAdmin(admin.ModelAdmin):
             {
                 'fields': (
                     ('id',),
-                    'name',
                     'description',
                     'owner',
-                    'coverage',
+                    'host',
+                    'port',
                 )
             },
         ),
@@ -31,5 +31,4 @@ class ProjectAdmin(admin.ModelAdmin):
             },
         ),
     )
-
     readonly_fields = ('created_at', 'updated_at', 'id')
