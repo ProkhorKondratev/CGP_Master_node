@@ -11,4 +11,5 @@ router.registry.extend(nodes_view_sets)
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
+    path('auth/', include('accounts.urls')),
 ]
