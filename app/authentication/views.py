@@ -34,11 +34,11 @@ class LoginView(View):
 class LogoutView(View):
     async def get(self, request):
         await sync_to_async(logout)(request)
-        return JsonResponse({'detail': 'Вы успешно вышли'})
+        return JsonResponse({'detail': 'Успешный выход'})
 
 
 class CheckAuthView(View):
     async def get(self, request):
         if request.user.is_authenticated:
-            return JsonResponse({'isAuthenticated': True, 'username': request.user.username})
-        return JsonResponse({'isAuthenticated': False})
+            return JsonResponse({'auth': True, 'username': request.user.username})
+        return JsonResponse({'auth': False})

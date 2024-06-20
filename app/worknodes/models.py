@@ -4,7 +4,7 @@ from app.utils.mixins import TimestampedModel
 import uuid
 
 
-class WorkerNode(TimestampedModel):
+class Worknode(TimestampedModel):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,

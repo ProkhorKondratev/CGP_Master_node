@@ -56,7 +56,7 @@ CUSTOM_APPS = [
 
 INSTALLED_APPS = BASE_APPS + LIBS + CUSTOM_APPS
 
-ASGI_APPLICATION = 'app.asgi.application'
+ASGI_APPLICATION = 'app.config.asgi.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
