@@ -1,6 +1,6 @@
 from django.contrib.gis.db import models
 from django.conf import settings
-from app.utils.mixins import TimestampedModel
+from utils.mixins import TimestampedModel
 import uuid
 
 

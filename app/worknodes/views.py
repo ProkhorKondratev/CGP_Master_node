@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
-from app.utils.filters import OwnerFilterBackend
+from utils.filters import OwnerFilterBackend
 from .models import Worknode
 from .serializers import WorknodeSerializer
 

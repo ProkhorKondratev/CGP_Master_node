@@ -1,7 +1,6 @@
 [tool.poetry]
-name = "app"
-version = "0.1.0"
-description = ""
+description = "CGP_Master_node"
+package-mode = false
 authors = ["KondratevProkhor <prokhor-2000@mail.ru>"]
 readme = "README.md"
 

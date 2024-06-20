@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-from app.utils.mixins import TimestampedModel
+from utils.mixins import TimestampedModel
 import uuid
 
 

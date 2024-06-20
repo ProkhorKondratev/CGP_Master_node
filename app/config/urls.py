@@ -14,8 +14,6 @@ router.registry.extend(worknodes_urls)
 
 urlpatterns = [
     path('auth/', include(auth_urls)),
-    # path('worknodes/', include(worknodes_urls)),
-    # path('workspaces/', include(workspaces_urls)),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
 ]
