@@ -1,8 +1,6 @@
 from django.apps import AppConfig
 
 
-class ProjectsConfig(AppConfig):
+class WorknodesConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'projects'
-
-    verbose_name = 'Проекты'
+    name = 'worknodes'

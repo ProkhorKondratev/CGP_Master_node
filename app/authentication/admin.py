@@ -20,7 +20,7 @@ class CustomUserAdmin(UserAdmin):
                 'fields': (
                     ('last_name', 'first_name'),
                     ('middle_name',),
-                    ('email', 'phone'),
+                    ('email',),
                 )
             },
         ),
@@ -44,7 +44,6 @@ class CustomUserAdmin(UserAdmin):
         'username',
         'email',
         'fio',
-        'phone',
     )
     list_display_links = ('username', 'email')
 

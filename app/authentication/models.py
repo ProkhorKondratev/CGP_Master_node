@@ -1,8 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
-from phonenumber_field.modelfields import PhoneNumberField
 
 
+# Create your models here.
 class User(AbstractUser):
     middle_name = models.CharField(
         max_length=150,
@@ -10,12 +10,6 @@ class User(AbstractUser):
         null=True,
         verbose_name='Отчество',
         help_text='При наличии',
-    )
-    phone = PhoneNumberField(
-        blank=True,
-        null=True,
-        verbose_name='Телефон',
-        help_text='Телефон',
     )
 
     class Meta:

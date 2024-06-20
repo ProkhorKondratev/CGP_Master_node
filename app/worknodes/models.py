@@ -1,20 +1,16 @@
-from django.contrib.gis.db import models
 from django.conf import settings
+from django.db import models
+from app.utils.mixins import TimestampedModel
 import uuid
 
 
-class WorkerNode(models.Model):
+class WorkerNode(TimestampedModel):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
         editable=False,
         verbose_name='Идентификатор',
         help_text='Уникальный идентификатор рабочего узла',
-    )
-    description = models.TextField(
-        verbose_name='Описание',
-        help_text='Описание рабочего узла',
-        blank=True,
     )
     owner = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -31,16 +27,6 @@ class WorkerNode(models.Model):
     port = models.PositiveIntegerField(
         verbose_name='Порт',
         help_text='Порт рабочего узла',
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата создания',
-        help_text='Дата создания рабочего узла',
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Дата обновления',
-        help_text='Дата последнего обновления рабочего узла',
     )
 
     def __str__(self):

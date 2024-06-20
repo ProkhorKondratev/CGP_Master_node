@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET')
+SECRET_KEY = 'django-insecure-3d7!ux4c2pb-#_((7+asrn6pe=01k#+vvp5#46-paky+p3qs^#'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -31,7 +31,8 @@ ALLOWED_HOSTS = ['*']
 
 # Application definition
 
-INSTALLED_APPS = [
+BASE_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.gis',
     'django.contrib.auth',
@@ -39,22 +40,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'phonenumber_field',
+]
+
+LIBS = [
     'rest_framework',
     'rest_framework_gis',
     'corsheaders',
 ]
 
 CUSTOM_APPS = [
-    'accounts',
-    'projects',
-    'nodes',
+    'authentication',
+    'workspaces',
+    'worknodes',
 ]
 
-INSTALLED_APPS += CUSTOM_APPS
+INSTALLED_APPS = BASE_APPS + LIBS + CUSTOM_APPS
+
+ASGI_APPLICATION = 'app.asgi.application'
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -99,15 +103,6 @@ DATABASES = {
     }
 }
 
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": "redis://127.0.0.1:6379/1",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-    }
-}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -127,7 +122,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'accounts.User'
+
+AUTH_USER_MODEL = 'authentication.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -145,32 +141,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'static'
 
-MEDIA_URL = 'media/'
-MEDIA_ROOT = BASE_DIR / 'media'
-
-CSRF_COOKIE_SAMESITE = 'Lax'
-SESSION_COOKIE_SAMESITE = 'Lax'
-
-CSRF_COOKIE_HTTPONLY = True
-SESSION_COOKIE_HTTPONLY = True
-
-CSRF_TRUSTED_ORIGINS = ['http://localhost:8080']
-
-CORS_ALLOWED_ORIGINS = [
-    'http://localhost:8080',
-]
-
-CORS_ALLOW_CREDENTIALS = True
-
-REST_FRAMEWORK = {
-    'DEFAULT_AUTHENTICATION_CLASSES': [
-        'rest_framework.authentication.SessionAuthentication',
-    ],
-    'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAuthenticated',
-    ],
-}
+# Default primary key field type
+# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

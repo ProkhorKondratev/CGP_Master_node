@@ -1,9 +1,10 @@
 from django.contrib.gis.db import models
 from django.conf import settings
+from app.utils.mixins import TimestampedModel
 import uuid
 
 
-class Project(models.Model):
+class Project(TimestampedModel):
     id = models.UUIDField(
         primary_key=True,
         default=uuid.uuid4,
@@ -28,16 +29,6 @@ class Project(models.Model):
         related_query_name='project',
         verbose_name='Владелец',
         help_text='Владелец проекта',
-    )
-    created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name='Дата создания',
-        help_text='Дата создания проекта',
-    )
-    updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name='Дата обновления',
-        help_text='Дата последнего обновления проекта',
     )
     coverage = models.PolygonField(
         null=True,
