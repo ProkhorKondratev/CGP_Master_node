@@ -6,12 +6,14 @@ from authentication import urls as auth_urls
 from workspaces import urls as workspaces_urls
 from worknodes import urls as worknodes_urls
 
-
+# маршруты djangorestframework
 router = DefaultRouter()
+
+# подключение маршрутов модулей
 router.registry.extend(workspaces_urls.view_sets)
 router.registry.extend(worknodes_urls.view_sets)
 
-
+# объявление стандартных маршрутов
 urlpatterns = [
     path('auth/', include(auth_urls)),
     path('nodes/', include(worknodes_urls.urlpatterns)),
